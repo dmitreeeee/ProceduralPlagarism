@@ -83,6 +83,8 @@ canvas {
   /* transition: 1s width cubic-bezier(0,0,0.3,1); */
   transition: 1s width ease-in-out; }
 
+
+
 .logo__container .logo__row {
   opacity: 0;
   pointer-events: none;
@@ -314,6 +316,7 @@ canvas {
   color: red;
 
 }
+
 .slice {
   width: 100%;
   display: block; }
