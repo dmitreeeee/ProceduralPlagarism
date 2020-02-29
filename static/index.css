@@ -43,7 +43,7 @@ body.app__high-contrast * {
 */
 @font-face {
   font-family: "BNT";
-  src: url("ProceduralPlagarism/static/fonts/big-noodle-too.ttf") format("truetype"); }
+  src: url("fonts/big-noodle-too.ttf") format("truetype"); }
 a {
   will-change: opacity;
   transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
