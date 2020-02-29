@@ -305,15 +305,17 @@ canvas {
   .reimbursements__table > thead > tr > th {
     text-align: left; }
 
-.box {
-  width: 20%;
-  height: 20%;
-  margin-left: 20%;
-  display: flex;
-  justify-content: flex-start;
-  color: red;
-  
+.arrow-up {
+  display:block;
+  position: absolute;
+  width: 50%;
+  height: 500%;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
 }
+
 .slice {
   width: 100%;
   display: block; }
