@@ -191,7 +191,7 @@ function createLandscape(params){
         } else if (scrollPercent > 1) {
             scrollPercent = 1
         }
-        terrain.material.uniforms.scrollPercent.value = scrollPercent
+        terrain.material.uniforms.scrollPercent.value = 0.35
 
             /*
         let lerpedRayleigh = map(scrollPercent, 0, 1, 0.01, 1);
@@ -222,7 +222,8 @@ function createLandscape(params){
                     Math.sin(angleCenter)
                     + Math.sin(angleCenter*0.5)
             ) * wRoad;
-        document.getElementById("header").innerHTML = terrain.material.uniforms.centerOff.value;
+        //document.getElementById("header").innerHTML = terrain.material.uniforms.centerOff.value;
+        document.getElementById("header").innerHTML = `Score: ${terrain.material.uniforms.centerOff.value}`
         document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
 
         console.log(terrain.material.uniforms.centerOff.value);

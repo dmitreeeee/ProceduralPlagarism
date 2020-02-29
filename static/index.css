@@ -47,8 +47,8 @@ body.app__high-contrast * {
 a {
   will-change: opacity;
   transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
-  opacity: 0.8;
-  color: #CB0202;
+  /*opacity: 0.8;
+  color: #CB0202;*/
   text-decoration: none;
   cursor: pointer; }
 
@@ -68,7 +68,7 @@ canvas {
   position: relative;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -353,13 +353,16 @@ canvas {
 
 @keyframes ribbon-slide-down-frames {
   from {
-    transform: translateY(-2.1rem); }
+    transform: translateY(-5rem); }
   to {
     transform: translateY(0); } }
 .ribbon {
   position: absolute;
   display: block;
-  background-color: #CB0202;
+  /*background-color: #CB0202;*/
+  font-weight: bold;
+  font-family: 'BNT', sans-serif;
+  font-size: 4em;
   padding: 5px 1em 5px 1em;
   left: 0;
   right: 0;
@@ -369,7 +372,7 @@ canvas {
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   animation-delay: 2s;
-  transform: translateY(-2.1rem); }
+  transform: translateY(-5rem); }
   .ribbon > i.fas {
     transition: transform 0.25s cubic-bezier(0, 0, 0.3, 1); }
   .ribbon:hover > i.fas {
