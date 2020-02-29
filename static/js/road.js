@@ -74,7 +74,7 @@ function createLandscape(params){
             distortCenter: { type: "f", value: 0.1 },
             roadWidth: { type: "f", value: 0.5 },
             pallete:{ type: "t", value: null},
-            speed: { type: "f", value: 3 },
+            speed: { type: "f", value: 1 },
             maxHeight: { type: "f", value: 10.0 },
             color:new THREE.Color(1, 1, 1),
             scrollPercent: { type: "f", value: 0.0 },
@@ -180,7 +180,7 @@ function createLandscape(params){
         terrain.material.uniforms.maxHeight.value = map(mouse.yDamped, 0, height, 20, 5);
 
 
-        terrain.material.uniforms.roadWidth.value =  Math.abs(Math.sin(time) * 4);
+        //terrain.material.uniforms.roadWidth.value =  Math.abs(Math.sin(time) * 4);
         //console.log(terrain.material.program.getAttributes())
         //console.log(terrain.material.program.getAttributes)
 
@@ -210,7 +210,7 @@ function createLandscape(params){
         // uv.y
         var PI = 3.1415926535897932384626433832795
         var t = terrain.material.uniforms.speed.value * terrain.material.uniforms.time.value
-        terrain.material.uniforms.angleCenter.value = 1 * PI*4.0;
+        terrain.material.uniforms.angleCenter.value = 0 * PI*4.0;
         terrain.material.uniforms.angleCenter.value += t * 0.9; // the x value, function of time and speed
 
         angleCenter = terrain.material.uniforms.angleCenter.value;
@@ -223,6 +223,9 @@ function createLandscape(params){
                     Math.sin(angleCenter*0.5)
             ) * wRoad;
         console.log(terrain.material.uniforms.centerOff.value);
+        console.log(mouse.x);
+
+
 
         //terrain.material.uniforms.angleCenter.value = 0.0;
         renderer.render(scene, camera)
