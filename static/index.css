@@ -156,7 +156,14 @@ canvas {
   justify-content: center;
   align-items: center;
   color: white; }
-
+.starry
+{
+  position: fixed;
+  z-index: 999;
+	opacity: 0.9;
+  max-width: 3%;
+  max-height: 30%
+}
 .faq {
   color: #EFEFEF; }
 
