@@ -15,7 +15,7 @@ function createLandscape(params){
     var gyro;
 
     var score;
-    
+
     var mouse = { x:0, y:0, xDamped:0, yDamped:0 };
     var isMobile = typeof window.orientation !== 'undefined'
 
@@ -74,9 +74,9 @@ function createLandscape(params){
         var uniforms = {
             time: { type: "f", value: 0.0 },
             distortCenter: { type: "f", value: 0.1 },
-            roadWidth: { type: "f", value: 0.5 },
+            roadWidth: { type: "f", value: 2 },
             pallete:{ type: "t", value: null},
-            speed: { type: "f", value: 1 },
+            speed: { type: "f", value: 2.5 },
             maxHeight: { type: "f", value: 10.0 },
             color:new THREE.Color(1, 1, 1),
             scrollPercent: { type: "f", value: 0.0 },
@@ -168,14 +168,10 @@ function createLandscape(params){
         mouse.x = 0;
         mouse.y = 1 - (window.innerHeight * (0.5 + ((-1 * Math.cos(betaRadian * 2)) / 2)))
     }
-    function setScore()
-    {
-      Score = 0;
-    }
 
     function updateScore(mouseXPos, sliderValue)
     {
-      float diff = Math.abs(mouseXPos - sliderValue);
+      var diff = Math.abs(mouseXPos - sliderValue);
 
       if (diff > 10)
       {
@@ -193,7 +189,7 @@ function createLandscape(params){
         requestAnimationFrame(render)
 
         // damping mouse for smoother interaction
-        mouse.xDamped = lerp(mouse.xDamped, mouse.x, 0.1);
+        mouse.xDamped = lerp(mouse.xDamped, mouse.x, 0.13);
         mouse.yDamped = lerp(mouse.yDamped, mouse.y, 0.1);
 
         var time = performance.now() * 0.001
@@ -248,12 +244,20 @@ function createLandscape(params){
         document.getElementById("header").innerHTML = `Score: ${terrain.material.uniforms.centerOff.value}`
         document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
 
-        document.getElementById("rocket").style.marginLeft = `${100*mouse.x/window.innerWidth}%`
-        document.getElementById("rocket").style.marginRight = `${100 - 100*mouse.x/window.innerWidth}%`
+        document.getElementById("rocket").style.marginLeft = `${100*mouse.xDamped/window.innerWidth}%`
+        document.getElementById("rocket").style.marginRight = `${100 - 100*mouse.xDamped/window.innerWidth}%`
+        document.getElementById("rocket").style.marginTop = `60%`
 
-        console.log(mouse.x);
-        console.log(window.innerWidth);
-        console.log(mouse.x/window.innerWidth);
+        terrain.material.uniforms.roadWidth.value = 5 - time*0.5;
+        if (terrain.material.uniforms.roadWidth.value < 0.5) terrain.material.uniforms.roadWidth.value = 0.5;
+
+        var diff =-45 - (mouse.xDamped-mouse.x)*0.3;
+        console.log(diff);
+
+        document.getElementById("rocketoo").style.transform = 'rotate('+diff+'deg)';
+        console.log('rotate('+diff+'deg)')
+
+
 
         //console.log(terrain.material.uniforms.centerOff.value);
         //console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
