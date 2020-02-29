@@ -2,7 +2,7 @@ createLandscape({
     palleteImage:'static/img/palette.png'
 })
 var scene, renderer, camera;
-
+var once;
 
 function createLandscape(params){
 
@@ -14,7 +14,7 @@ function createLandscape(params){
     var terrain, skybox;
     var gyro;
 
-    var score = 200;
+    var score = 1000;
 
     var mouse = { x:0, y:0, xDamped:0, yDamped:0 };
     var isMobile = typeof window.orientation !== 'undefined'
@@ -174,13 +174,20 @@ function createLandscape(params){
 
     function updateScore(mouseXPos, sliderValue)
     {
+      var tolerance = 0;
+      if (terrain.material.uniforms.time.value > 30){
+        tolerance = 12;
+      } else {
+        tolerance = 17;
+      }
+
       var scaleMouse = (mouseXPos - (window.innerWidth/2))*(50/(window.innerWidth/2))
 
       var diff = Math.abs(scaleMouse - sliderValue);
-      console.log(scaleMouse + ' vs ' +  sliderValue)
-      if (diff > 20)
+      //console.log(scaleMouse + ' vs ' +  sliderValue)
+      if (diff > tolerance)
       {
-        score -= 3
+        score -= (diff)/8.5
       }
       else
       {
@@ -188,16 +195,33 @@ function createLandscape(params){
       }
 
       if (terrain.material.uniforms.time.value < 10){
-        score = 0;
+        score = 200;
       }
+
+
 
       //if (score > 500){
       //if (terrain.material.uniforms.speed.value< score/2/100){
       //  terrain.material.uniforms.speed.value = score/2/100;
       //}
       //}
-      document.getElementById("header").innerHTML = `Score ${score}`
 
+      if (score < 0){
+        if (!once) gameOver()
+      }
+
+      score = Math.round(score)
+      document.getElementById("header").innerHTML = `score ${score}`
+
+    }
+
+    function gameOver(){
+      var seconds = Math.round(terrain.material.uniforms.time.value);
+      document.getElementById("finalScore").innerHTML = `Congrats, you survived for ${seconds} seconds`;
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("rocket").style.display = "none";
+      document.getElementById("header").style.display = "none";
+      once = true;
     }
 
     function render(){
@@ -257,7 +281,7 @@ function createLandscape(params){
             ) * wRoad;
         //document.getElementById("header").innerHTML = terrain.material.uniforms.centerOff.value;
         document.getElementById("header").innerHTML = `Score: ${terrain.material.uniforms.centerOff.value}`
-        document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
+        //document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
 
         document.getElementById("rocket").style.marginLeft = `${100*mouse.xDamped/window.innerWidth}%`
         document.getElementById("rocket").style.marginRight = `${100 - 100*mouse.xDamped/window.innerWidth}%`
@@ -267,13 +291,12 @@ function createLandscape(params){
         if (terrain.material.uniforms.roadWidth.value < 0.5) terrain.material.uniforms.roadWidth.value = 0.5;
 
         var diff =-45 - (mouse.xDamped-mouse.x)*0.3;
-        console.log(diff);
 
         document.getElementById("rocketoo").style.transform = 'rotate('+diff+'deg)';
         //console.log('rotate('+diff+'deg)')
 
         terrain.material.uniforms.speed.value = terrain.material.uniforms.time.value/10;
-        console.log(terrain.material.uniforms.time.value);
+        //console.log(terrain.material.uniforms.time.value);
 
         //console.log(terrain.material.uniforms.centerOff.value);
         //console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);

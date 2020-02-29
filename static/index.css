@@ -65,6 +65,7 @@ canvas {
   transition: 1s opacity cubic-bezier(0, 0, 0.3, 1); }
 
 .logo__container {
+  pointer-events: none;
   position: relative;
   top: 0;
   left: 0;
@@ -578,3 +579,25 @@ input.live__topbar__input:checked + label {
 
 .live--hidden {
   display: none; }
+
+#overlay{
+    display: none;
+    z-index: 1;
+    text-align:center;
+}
+
+#overlay a{
+  border-style: solid;
+  border-radius: 1px;
+  border-color: #eaeaeaee;
+  color:#eaeaeaee;
+  padding: 2px;
+  margin-bottom:5px;
+}
+#rocket{
+  display: block;
+}
+
+#header{
+  display: block;
+}
