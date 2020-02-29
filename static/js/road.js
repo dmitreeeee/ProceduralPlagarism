@@ -15,7 +15,7 @@ function createLandscape(params){
     var gyro;
 
     var score;
-    
+
     var mouse = { x:0, y:0, xDamped:0, yDamped:0 };
     var isMobile = typeof window.orientation !== 'undefined'
 
@@ -70,6 +70,8 @@ function createLandscape(params){
     function sceneElements(){
 
         var geometry = new THREE.PlaneBufferGeometry(100, 400, 400, 400);
+
+        score = 0;
 
         var uniforms = {
             time: { type: "f", value: 0.0 },
@@ -168,24 +170,21 @@ function createLandscape(params){
         mouse.x = 0;
         mouse.y = 1 - (window.innerHeight * (0.5 + ((-1 * Math.cos(betaRadian * 2)) / 2)))
     }
-    function setScore()
-    {
-      Score = 0;
-    }
+
 
     function updateScore(mouseXPos, sliderValue)
     {
-      float diff = Math.abs(mouseXPos - sliderValue);
+      var diff = Math.abs(mouseXPos - sliderValue);
 
       if (diff > 10)
       {
-        Score -= 2
+        score -= 2
       }
       else
       {
-        Score += 1
+        score += 1
       }
-      document.getElementById("header").innerHTML = `Score ${Score}`
+      document.getElementById("header").innerHTML = `Score ${score}`
 
     }
 
@@ -257,7 +256,7 @@ function createLandscape(params){
 
         //console.log(terrain.material.uniforms.centerOff.value);
         //console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
-
+        updateScore(mouse.x, Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
 
         //terrain.material.uniforms.angleCenter.value = 0.0;
         renderer.render(scene, camera)
