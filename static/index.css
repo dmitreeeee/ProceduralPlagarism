@@ -305,6 +305,15 @@ canvas {
   .reimbursements__table > thead > tr > th {
     text-align: left; }
 
+.box {
+  width: 20%;
+  height: 20%;
+  margin-left: 20%;
+  display: flex;
+  justify-content: flex-start;
+  color: red;
+  
+}
 .slice {
   width: 100%;
   display: block; }
@@ -325,7 +334,7 @@ canvas {
   color: white;
   background-color: #272A2B;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: space-between;
   margin-top: 25vh; }
@@ -362,6 +371,7 @@ canvas {
     transition: transform 0.25s cubic-bezier(0, 0, 0.3, 1); }
   .ribbon:hover > i.fas {
     transform: translateX(5px); }
+
 
 .live__schedule {
   padding: 0 0 70px 0; }

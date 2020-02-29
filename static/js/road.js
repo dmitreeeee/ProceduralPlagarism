@@ -222,6 +222,7 @@ function createLandscape(params){
                     Math.sin(angleCenter) +
                     Math.sin(angleCenter*0.5)
             ) * wRoad;
+        document.getElementById("header").innerHTML = terrain.material.uniforms.centerOff.value;
         console.log(terrain.material.uniforms.centerOff.value);
 
         //terrain.material.uniforms.angleCenter.value = 0.0;
