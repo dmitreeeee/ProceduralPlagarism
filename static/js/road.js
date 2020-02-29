@@ -14,7 +14,7 @@ function createLandscape(params){
     var terrain, skybox;
     var gyro;
 
-    var score;
+    var score = 200;
 
     var mouse = { x:0, y:0, xDamped:0, yDamped:0 };
     var isMobile = typeof window.orientation !== 'undefined'
@@ -174,16 +174,28 @@ function createLandscape(params){
 
     function updateScore(mouseXPos, sliderValue)
     {
-      var diff = Math.abs(mouseXPos - sliderValue);
+      var scaleMouse = (mouseXPos - (window.innerWidth/2))*(50/(window.innerWidth/2))
 
-      if (diff > 10)
+      var diff = Math.abs(scaleMouse - sliderValue);
+      console.log(scaleMouse + ' vs ' +  sliderValue)
+      if (diff > 20)
       {
-        score -= 2
+        score -= 3
       }
       else
       {
         score += 1
       }
+
+      if (terrain.material.uniforms.time.value < 10){
+        score = 0;
+      }
+
+      //if (score > 500){
+      //if (terrain.material.uniforms.speed.value< score/2/100){
+      //  terrain.material.uniforms.speed.value = score/2/100;
+      //}
+      //}
       document.getElementById("header").innerHTML = `Score ${score}`
 
     }
@@ -258,9 +270,10 @@ function createLandscape(params){
         console.log(diff);
 
         document.getElementById("rocketoo").style.transform = 'rotate('+diff+'deg)';
-        console.log('rotate('+diff+'deg)')
+        //console.log('rotate('+diff+'deg)')
 
-
+        terrain.material.uniforms.speed.value = terrain.material.uniforms.time.value/10;
+        console.log(terrain.material.uniforms.time.value);
 
         //console.log(terrain.material.uniforms.centerOff.value);
         //console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
