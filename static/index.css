@@ -160,10 +160,10 @@ canvas {
 .starry
 {
   position: fixed;
-  z-index: 999;
+  z-index: -999;
 	opacity: 0.9;
-  max-width: 3%;
-  max-height: 30%
+  max-width: 5%;
+  max-height: 30%;
 }
 .faq {
   color: #EFEFEF; }
