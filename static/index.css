@@ -23,7 +23,7 @@ section {
   animation: ribbon-slide-down-frames ease-in;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  animation-delay: 2s;
+  animation-delay: 5s;
   transform: translateY(-2.1rem); }
 
 #hc-enable.hc__active {
@@ -379,7 +379,7 @@ canvas {
   animation: ribbon-slide-down-frames ease-in;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  animation-delay: 2s;
+  animation-delay: 5s;
   transform: translateY(-5rem); }
   .ribbon > i.fas {
     transition: transform 0.25s cubic-bezier(0, 0, 0.3, 1); }

@@ -194,7 +194,7 @@ function createLandscape(params){
         score += 1
       }
 
-      if (terrain.material.uniforms.time.value < 10){
+      if (terrain.material.uniforms.time.value < 7){
         score = 200;
       }
 
@@ -248,7 +248,7 @@ function createLandscape(params){
         } else if (scrollPercent > 1) {
             scrollPercent = 1
         }
-        terrain.material.uniforms.scrollPercent.value = 0.35
+        terrain.material.uniforms.scrollPercent.value = 0.2
 
             /*
         let lerpedRayleigh = map(scrollPercent, 0, 1, 0.01, 1);
@@ -287,7 +287,7 @@ function createLandscape(params){
         document.getElementById("rocket").style.marginRight = `${100 - 100*mouse.xDamped/window.innerWidth}%`
         document.getElementById("rocket").style.marginTop = `60%`
 
-        terrain.material.uniforms.roadWidth.value = 5 - time*0.5;
+        terrain.material.uniforms.roadWidth.value = 20 - time*3;
         if (terrain.material.uniforms.roadWidth.value < 0.5) terrain.material.uniforms.roadWidth.value = 0.5;
 
         var diff =-45 - (mouse.xDamped-mouse.x)*0.3;
