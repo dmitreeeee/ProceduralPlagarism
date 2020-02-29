@@ -210,7 +210,7 @@ function createLandscape(params){
         // uv.y
         var PI = 3.1415926535897932384626433832795
         var t = terrain.material.uniforms.speed.value * terrain.material.uniforms.time.value
-        terrain.material.uniforms.angleCenter.value = 0 * PI*4.0;
+        terrain.material.uniforms.angleCenter.value = 0.35 * PI;
         terrain.material.uniforms.angleCenter.value += t * 0.9; // the x value, function of time and speed
 
         angleCenter = terrain.material.uniforms.angleCenter.value;
@@ -219,13 +219,14 @@ function createLandscape(params){
         //console.log(terrain.material.uniforms.angleCenter.value);
 
         terrain.material.uniforms.centerOff.value =  ( // Defines the path the road will take
-                    Math.sin(angleCenter) +
-                    Math.sin(angleCenter*0.5)
+                    Math.sin(angleCenter)
+                    + Math.sin(angleCenter*0.5)
             ) * wRoad;
         document.getElementById("header").innerHTML = terrain.material.uniforms.centerOff.value;
-        console.log(terrain.material.uniforms.centerOff.value);
-        console.log(mouse.x);
+        document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
 
+        console.log(terrain.material.uniforms.centerOff.value);
+        console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
 
 
         //terrain.material.uniforms.angleCenter.value = 0.0;

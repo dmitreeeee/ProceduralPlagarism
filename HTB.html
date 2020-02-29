@@ -39,19 +39,15 @@
   <canvas id="c"></canvas>
 
   <section class="logo__container logo__container--reasonable">
-      <div class="row__center logo__row">
-          <p class="logo__info">
-              <span>Informatics Forum</span>
-          </p>
-      </div>
+    <div class="slidecontainer"  style="width: 100%;margin-top: 70%">
+      <input type="range" min="-50" max="50" class="slider" id="rangey" style="width: 100%">
+    </div>
   </section>
 
 
 </section>
 <div class="footer">
 </div>
-<script src="static/js/ProceduralPlagarism.js" type="text/javascript"></script>
-
 
 <script id="custom-vertex" type="x-shader/x-vertex">
 
@@ -254,8 +250,8 @@ void main() {
     angleCenter += t * 0.9;
 
     float centerOff = (
-            sin(angleCenter) +
-            sin(angleCenter*0.5)
+            sin(angleCenter)
+            + sin(angleCenter*0.5)
     ) * wRoad;
 
 
