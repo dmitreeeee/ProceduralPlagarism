@@ -1,6 +1,8 @@
 createLandscape({
     palleteImage:'static/img/palette.png'
 })
+var scene, renderer, camera;
+
 
 function createLandscape(params){
 
@@ -8,7 +10,7 @@ function createLandscape(params){
     var width = window.innerWidth;
     var height = window.innerHeight;
 
-    var scene, renderer, camera;
+    //var scene, renderer, camera;
     var terrain, skybox;
     var gyro;
 
@@ -72,7 +74,7 @@ function createLandscape(params){
             distortCenter: { type: "f", value: 0.1 },
             roadWidth: { type: "f", value: 0.5 },
             pallete:{ type: "t", value: null},
-            speed: { type: "f", value: 1 },
+            speed: { type: "f", value: 3 },
             maxHeight: { type: "f", value: 10.0 },
             color:new THREE.Color(1, 1, 1),
             scrollPercent: { type: "f", value: 0.0 }
@@ -173,6 +175,11 @@ function createLandscape(params){
         terrain.material.uniforms.time.value = time;
         terrain.material.uniforms.distortCenter.value = Math.sin(time) * 0.1;
         terrain.material.uniforms.maxHeight.value = map(mouse.yDamped, 0, height, 20, 5);
+
+
+        terrain.material.uniforms.roadWidth.value =  Math.abs(Math.sin(time) * 4);
+        //console.log(terrain.material.program.getAttributes())
+        //console.log(terrain.material.program.getAttributes)
 
         // transformation of skybox
         let scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
