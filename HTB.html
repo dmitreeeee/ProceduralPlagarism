@@ -246,8 +246,8 @@ void main() {
     float angleCenter = uv.y * PI*4.0;
     angleCenter += t * 0.9;
 
-    centerOff = (
-            (sin(angleCenter)) +
+    float centerOff = (
+            sin(angleCenter) +
             sin(angleCenter*0.5)
     ) * wRoad;
 
