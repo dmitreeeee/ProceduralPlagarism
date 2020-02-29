@@ -14,6 +14,8 @@ function createLandscape(params){
     var terrain, skybox;
     var gyro;
 
+    var score;
+    
     var mouse = { x:0, y:0, xDamped:0, yDamped:0 };
     var isMobile = typeof window.orientation !== 'undefined'
 
@@ -166,6 +168,26 @@ function createLandscape(params){
         mouse.x = 0;
         mouse.y = 1 - (window.innerHeight * (0.5 + ((-1 * Math.cos(betaRadian * 2)) / 2)))
     }
+    function setScore()
+    {
+      Score = 0;
+    }
+
+    function updateScore(mouseXPos, sliderValue)
+    {
+      float diff = Math.abs(mouseXPos - sliderValue);
+
+      if (diff > 10)
+      {
+        Score -= 2
+      }
+      else
+      {
+        Score += 1
+      }
+      document.getElementById("header").innerHTML = `Score ${Score}`
+
+    }
 
     function render(){
         requestAnimationFrame(render)
@@ -205,7 +227,7 @@ function createLandscape(params){
 
         calculateSunPosition( scrollPercent );
         */
-
+        // Update Score
 
         // uv.y
         var PI = 3.1415926535897932384626433832795
