@@ -248,8 +248,13 @@ function createLandscape(params){
         document.getElementById("header").innerHTML = `Score: ${terrain.material.uniforms.centerOff.value}`
         document.getElementById("rangey").value = Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0;
 
-        console.log(terrain.material.uniforms.centerOff.value);
-        console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
+        document.getElementById("rocket").style.marginLeft = `${100*mouse.x/window.innerWidth}%`
+        console.log(mouse.x);
+        console.log(window.innerWidth);
+        console.log(mouse.x/window.innerWidth);
+
+        //console.log(terrain.material.uniforms.centerOff.value);
+        //console.log(Math.sign(terrain.material.uniforms.centerOff.value)*Math.pow(Math.abs(terrain.material.uniforms.centerOff.value),0.5)*100.0);
 
 
         //terrain.material.uniforms.angleCenter.value = 0.0;
