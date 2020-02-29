@@ -314,7 +314,6 @@ canvas {
   color: red;
 
 }
-
 .slice {
   width: 100%;
   display: block; }
@@ -330,7 +329,7 @@ canvas {
   color: white; }
 
 .footer {
-  /*padding: 20px 40px 20px 40px;*/
+  padding: 20px 40px 20px 40px;
   font-size: 0.8em;
   color: white;
   background-color: #272A2B;
