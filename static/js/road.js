@@ -228,7 +228,7 @@ function createLandscape(params){
         requestAnimationFrame(render)
 
         // damping mouse for smoother interaction
-        mouse.xDamped = lerp(mouse.xDamped, mouse.x, 0.13);
+        mouse.xDamped = lerp(mouse.xDamped, mouse.x, 0.18);
         mouse.yDamped = lerp(mouse.yDamped, mouse.y, 0.1);
 
         var time = performance.now() * 0.001
