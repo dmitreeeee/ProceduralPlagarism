@@ -77,7 +77,10 @@ function createLandscape(params){
             speed: { type: "f", value: 3 },
             maxHeight: { type: "f", value: 10.0 },
             color:new THREE.Color(1, 1, 1),
-            scrollPercent: { type: "f", value: 0.0 }
+            scrollPercent: { type: "f", value: 0.0 },
+
+            angleCenter: {type: "f", value:0.0},
+            centerOff:{type: "f", value:0.0}
         }
 
         var material = new THREE.ShaderMaterial({
@@ -203,6 +206,25 @@ function createLandscape(params){
         calculateSunPosition( scrollPercent );
         */
 
+
+        // uv.y
+        var PI = 3.1415926535897932384626433832795
+        var t = terrain.material.uniforms.speed.value * terrain.material.uniforms.time.value
+        terrain.material.uniforms.angleCenter.value = 1 * PI*4.0;
+        terrain.material.uniforms.angleCenter.value += t * 0.9; // the x value, function of time and speed
+
+        angleCenter = terrain.material.uniforms.angleCenter.value;
+        wRoad = terrain.material.uniforms.distortCenter.value;
+
+        //console.log(terrain.material.uniforms.angleCenter.value);
+
+        terrain.material.uniforms.centerOff.value =  ( // Defines the path the road will take
+                    Math.sin(angleCenter) +
+                    Math.sin(angleCenter*0.5)
+            ) * wRoad;
+        console.log(terrain.material.uniforms.centerOff.value);
+
+        //terrain.material.uniforms.angleCenter.value = 0.0;
         renderer.render(scene, camera)
 
     }

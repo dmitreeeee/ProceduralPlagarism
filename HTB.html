@@ -232,7 +232,8 @@ uniform float roadWidth;
 varying float vDisplace;
 
 varying float fogDepth;
-varying float angleCenter;
+uniform float angleCenter;
+uniform float centerOff;
 
 void main() {
 
@@ -240,14 +241,6 @@ void main() {
     float wRoad = distortCenter;
     float wRoad2 = wRoad * 0.5;
 
-    angleCenter = uv.y * PI*4.0;
-    angleCenter += t * 0.9; // the x value, function of time and speed
-
-    float centerOff = ( // Defines the path the road will take
-            sin(angleCenter) +
-            sin(angleCenter*0.5)
-    ) * wRoad;
-    centerOff = 0.0;
 
     vec3 noiseIn = vec3(uv, 1.0)*10.0;
     float noise = cnoise(vec3(noiseIn.x, noiseIn.y + t, noiseIn.z));
