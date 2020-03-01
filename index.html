@@ -40,6 +40,7 @@
 
 
   <section class="logo__container logo__container--reasonable">
+    <audio src="Space_Walker.mp3" id="bckgrndAudio" type="audio/mpeg"></audio>
      <img src="moon.png" class = "starry" style="width: 30%">
     <div id="rocket">
       <p style="font-size:8em; transform: rotate(-45deg)" id="rocketoo">&#128640;</p>
@@ -60,7 +61,16 @@
 </section>
 <div class="footer">
 </div>
+</div>
+<script id="initWindow" type="text/javascript">
 
+window.onload=function(){
+    document.getElementById("bckgrndAudio").play();
+  }
+
+document.body.style.cursor = 'none';
+
+</script>
 <script id="custom-vertex" type="x-shader/x-vertex">
 
 //
