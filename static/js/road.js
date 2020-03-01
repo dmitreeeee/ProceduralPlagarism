@@ -216,6 +216,7 @@ function createLandscape(params){
     }
 
     function gameOver(){
+      document.body.style.cursor = 'auto';
       var seconds = Math.round(terrain.material.uniforms.time.value);
       document.getElementById("finalScore").innerHTML = `Congrats, you survived for ${seconds} seconds`;
       document.getElementById("overlay").style.display = "block";
