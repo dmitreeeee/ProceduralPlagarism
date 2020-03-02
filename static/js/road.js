@@ -188,9 +188,11 @@ function createLandscape(params){
       if (diff > tolerance)
       {
         score -= (diff)/8.5
+        document.getElementById("header").style.color = 'red'
       }
       else
       {
+        document.getElementById("header").style.color = 'white'
         score += 1
       }
 
